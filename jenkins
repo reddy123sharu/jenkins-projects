@@ -1,0 +1,20 @@
+pipeline {
+  agent {
+    docker {
+      image 'openjdk:16-jdk-alpine'
+      args '--rm=true'
+    }
+  }
+  stages {
+    stage('Build') {
+      steps {
+        sh 'javac HelloWorld.java'
+      }
+    }
+    stage('Run') {
+      steps {
+        sh 'java HelloWorld'
+      }
+    }
+  }
+}
